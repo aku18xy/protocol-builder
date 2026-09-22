@@ -76,8 +76,9 @@ export default function ProtocolBuilder() {
       const secRows = rows.filter(r => r.secId === sec.id);
       if (secRows.length > 0) {
         cpp += `// --- Section ${sec.id}: ${sec.name} ---\n`;
-        secRows.forEach(row => {
-          cpp += `len += snprintf(buf+len, sizeof(buf)-len, "${row.secId}:${row.id}:${row.type}:${row.label}:${row.template}|", ${row.vars});\n`;
+        secRows.forEach((row, index) => {
+          const rowInSec = index + 1; // Enforce [row#insec] format
+          cpp += `len += snprintf(buf+len, sizeof(buf)-len, "${row.secId}:${rowInSec}:${row.type}:${row.label}:${row.template}|", ${row.vars});\n`;
         });
         cpp += `\n`;
       }
@@ -123,14 +124,16 @@ export default function ProtocolBuilder() {
                     {rows.filter(r => r.secId === sec.id).length === 0 && (
                       <div className="text-center text-gray-600 text-sm py-4 font-mono">No rows in this section.</div>
                     )}
-                    {rows.filter(r => r.secId === sec.id).map(row => (
+                    {rows.filter(r => r.secId === sec.id).map((row, index) => (
                       <div key={row.id} className="flex flex-col gap-3 p-3 bg-black border border-gray-800 rounded-lg relative group">
                         <button onClick={() => removeRow(row.id)} className="absolute top-2 right-2 text-gray-600 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">✕</button>
                         
                         <div className="flex items-center gap-3">
                           <div className="flex items-center gap-2 w-1/4">
-                            <span className="text-xs text-gray-500 font-mono">ID:</span>
-                            <input type="number" value={row.id} onChange={(e) => updateRow(row.id, 'id', parseInt(e.target.value))} className="w-full bg-[#111] border border-gray-800 rounded px-2 py-1 text-sm outline-none focus:border-yellow-500" />
+                            <span className="text-xs text-gray-500 font-mono">Row In Sec:</span>
+                            <div className="w-full bg-[#111] border border-gray-800 rounded px-2 py-1 text-sm text-gray-400 font-mono cursor-not-allowed">
+                              {index + 1}
+                            </div>
                           </div>
                           <div className="flex items-center gap-2 w-3/4">
                             <span className="text-xs text-gray-500 font-mono">Type:</span>
