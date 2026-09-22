@@ -1,0 +1,12 @@
+/* In Tailwind v4, we use a standard import instead of the old @tailwind directives */
+@import "tailwindcss";
+
+/* Add your custom scrollbar and overscroll CSS here */
+html, body {
+height: 100%;
+height: 100dvh;
+background-color: #050505;
+overscroll-behavior-y: none;
+user-select: none;
+-webkit-user-select: none;
+}
