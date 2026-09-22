@@ -1,0 +1,3 @@
+/* In Tailwind v4, we use a standard import instead of the old @tailwind directives */
+@import "tailwindcss";
+
