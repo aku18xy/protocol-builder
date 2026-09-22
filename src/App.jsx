@@ -23,6 +23,7 @@ export default function ProtocolBuilder() {
     { id: 2, secId: 1, type: 7, label: 'Lantern Mode', template: '%d,Local,SC35,LH,ASO', vars: 'state.config.lantern_monitor' }
   ]);
 
+<<<<<<< HEAD
   const [activeAIPaste, setActiveAIPaste] = useState(null);
 
   // --- Simulated AI Agent Schema Dictionary ---
@@ -131,6 +132,11 @@ export default function ProtocolBuilder() {
       setRows([...rows, ...newRows]);
     }
     setActiveAIPaste(null);
+=======
+  const addSection = () => {
+    const newId = sections.length > 0 ? Math.max(...sections.map(s => s.id)) + 1 : 0;
+    setSections([...sections, { id: newId, name: `Section ${newId + 1}` }]);
+>>>>>>> 8904274b7fc74ca3907f95b9ff7e2ac60555bbe9
   };
 
   const updateSection = (id, name) => {
@@ -142,11 +148,14 @@ export default function ProtocolBuilder() {
     setRows(rows.filter(r => r.secId !== id));
   };
 
+<<<<<<< HEAD
   const addSection = () => {
     const newId = sections.length > 0 ? Math.max(...sections.map(s => s.id)) + 1 : 0;
     setSections([...sections, { id: newId, name: `Section ${newId}` }]);
   };
 
+=======
+>>>>>>> 8904274b7fc74ca3907f95b9ff7e2ac60555bbe9
   const addRow = (secId) => {
     const newId = rows.length > 0 ? Math.max(...rows.map(r => r.id)) + 1 : 1;
     setRows([...rows, { id: newId, secId, type: 2, label: 'New Row', template: '%.2f,V', vars: 'state.value' }]);
@@ -224,12 +233,16 @@ export default function ProtocolBuilder() {
                       />
                     </div>
                     <div className="flex gap-2">
+<<<<<<< HEAD
                       <button onClick={() => setActiveAIPaste(activeAIPaste === sec.id ? null : sec.id)} className="text-xs bg-blue-900/30 hover:bg-blue-900/60 text-blue-400 px-3 py-1.5 rounded transition-colors border border-blue-900/50">🤖 AI PASTE</button>
+=======
+>>>>>>> 8904274b7fc74ca3907f95b9ff7e2ac60555bbe9
                       <button onClick={() => addRow(sec.id)} className="text-xs bg-gray-800 hover:bg-gray-700 text-white px-3 py-1.5 rounded transition-colors">+ ROW</button>
                       <button onClick={() => removeSection(sec.id)} className="text-xs bg-red-900/30 hover:bg-red-900/60 text-red-500 px-3 py-1.5 rounded transition-colors">DEL SEC</button>
                     </div>
                   </div>
 
+<<<<<<< HEAD
                   {/* AI Paste Dropdown */}
                   {activeAIPaste === sec.id && (
                     <div className="p-4 bg-[#0a192f] border-b border-blue-900/50 flex flex-col gap-3 animate-pulse-once">
@@ -251,6 +264,8 @@ export default function ProtocolBuilder() {
                     </div>
                   )}
 
+=======
+>>>>>>> 8904274b7fc74ca3907f95b9ff7e2ac60555bbe9
                   {/* Section Rows */}
                   <div className="p-4 space-y-3">
                     {rows.filter(r => r.secId === sec.id).length === 0 && (
