@@ -22,11 +22,9 @@
     "oxlint": "^1.81.0",
     "postcss": "^8.5.28",
     "tailwindcss": "^4.3.3",
-<<<<<<< HEAD
     "vite": "^8.3.0",
     "vite-plugin-singlefile": "^2.3.3"
-=======
-    "vite": "^8.3.0"
->>>>>>> 8904274b7fc74ca3907f95b9ff7e2ac60555bbe9
   }
 }
+
+
